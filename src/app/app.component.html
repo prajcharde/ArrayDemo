@@ -1,0 +1,55 @@
+<div class="a">
+  <button class="btn btn-info">Projects</button>
+  <button class="btn btn-info">Users</button>
+  <hr>
+</div>
+
+<h2>My Projects</h2>
+<hr>
+<button class="btn btn-primary" (click)="showHide=!showHide">Create new Project</button>
+
+<div class="form" name="abc" *ngIf="showHide">
+  <label>Name</label>
+  <input type="text" id="name" [(ngModel)]="name" class="form-control">
+  <label>Description</label>
+  <input type="text" id="desc" [(ngModel)]="description" class="form-control">
+  <label>Status</label>
+  <select id="status" [(ngModel)]="status" class="form-control">
+   <option >Select</option>
+  <option value="Active">Active</option>
+  <option value="InActive">InActive</option>
+  <option value="Critical">Critical</option>
+</select>
+  <div class="abc">
+
+    <button class="btn btn-success" (click)="showResult()">Create</button>
+    <button class="btn btn-danger" (click)="showHide=!showHide">Close</button>
+  </div>
+</div>
+
+<div class="area" *ngFor="let hero of halo" [ngSwitch]="hero.status">
+  
+  <h2 class="xyz">{{hero.name}}</h2>
+
+
+  <span *ngSwitchCase="'Active'" class="badge badge-success">{{hero.status}}</span>
+  <span *ngSwitchCase="'InActive'" class="badge badge-secondary">{{hero.status}}</span>
+  <span *ngSwitchCase="'Critical'" class="badge badge-danger">{{hero.status}}</span>
+
+
+
+  <h4>{{hero.description}}</h4>
+  <select id="status" [disabled] class="form-control java">
+      <option >{{hero.status}}</option>
+      <option value="Active">Active</option>
+      <option value="InActive">InActive</option>
+      <option value="Critical">Critical</option>
+      </select>
+
+  <button class="btn btn-success x" (click)="onEdit()">Save</button>
+  <button class="btn btn-danger y" (click)="onClose()">Delete</button>
+
+
+</div>
+
+
